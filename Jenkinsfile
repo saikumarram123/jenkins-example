@@ -30,7 +30,7 @@ pipeline {
         }
     }
         post {
-            always {
+            success {
                 script {
                     def user = ''
                     for (cause in currentBuild.causes) {
