@@ -28,6 +28,7 @@ pipeline {
                 }
             }
         }
+    }
         post {
             always {
                 script {
@@ -41,6 +42,5 @@ pipeline {
                     slackSend(channel: '#testing', message: "Build triggered by ${user}")
                 }
             }
-        }
-    }
+     }    
 }
