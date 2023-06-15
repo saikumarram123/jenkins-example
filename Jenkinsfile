@@ -28,5 +28,19 @@ pipeline {
                 }
             }
         }
+    post {
+        success {
+            script {
+                def user = ''
+                for (cause in currentBuild.causes) {
+                    if (cause.class.toString().contains('UserIdCause')) {
+                        user = cause.userName
+                        break
+                    }
+                }
+                slackSend(channel: '#testing', message: "Build triggered by ${user}")
+            }
+        }
+    }
     }
 }
