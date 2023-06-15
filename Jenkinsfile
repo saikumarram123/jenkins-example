@@ -1,3 +1,5 @@
+import groovy.transform.Field
+
 pipeline {
     agent any
 
@@ -33,6 +35,7 @@ pipeline {
             always {
                 script {
                     def user = ''
+                    currentBuild.result = 'FAILURE'
                     for (cause in currentBuild.causes) {
                         if (cause.class.toString().contains('UserIdCause')) {
                             user = cause.userName
